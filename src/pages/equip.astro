@@ -1,0 +1,115 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const team = [
+  {
+    name: 'Marc',
+    role: 'Director Creatiu',
+    origin: 'Sabadell',
+    bio: 'Nascut a Sabadell, Marc ha heretat la casa familiar de la iaia Dominga i lidera la visió de l\'Atrevida. La seva missió: convertir un espai ple de records en un lloc on tothom se senti com a casa.',
+    image: 'https://images.unsplash.com/photo-1595273670150-bd0c3c392e46?w=800&q=80',
+    alt: 'Marc, director creatiu d\'Atrevida, a la cuina',
+  },
+  {
+    name: 'Héctor',
+    role: 'Xef Principal',
+    origin: 'Sant Antoni de Vilamajor',
+    bio: 'Xef de vocació i cor. Héctor porta a Sabadell la cuina que ha forjat durant anys a Sant Antoni: producte de mercat, tècnica i aquell punt d\'audàcia que dóna nom al restaurant.',
+    image: 'https://images.unsplash.com/photo-1583394293214-0b4b94855c71?w=800&q=80',
+    alt: 'Héctor, xef principal d\'Atrevida, empllatant un plat',
+  },
+  {
+    name: 'Sheila',
+    role: 'Sala & Experiència',
+    origin: 'Sant Antoni de Vilamajor',
+    bio: 'Filla d\'Emili i parella d\'Héctor, Sheila és l\'ànima de la sala. La seva calidesa i atenció al detall fan que cada visita a l\'Atrevida sigui una experiència única i memorable.',
+    image: 'https://images.unsplash.com/photo-1574181611642-4c4e4f787c15?w=800&q=80',
+    alt: 'Sheila, responsable de sala d\'Atrevida, somrient',
+  },
+  {
+    name: 'Emili',
+    role: 'Mestre de Foc',
+    origin: 'Sant Antoni de Vilamajor',
+    bio: 'Sogre d\'Héctor i pilar fonamental de la cuina. Emili aporta dècades d\'experiència i la saviesa d\'una cuina feta a foc lent, amb paciència i estima per la tradició catalana.',
+    image: 'https://images.unsplash.com/photo-1542528180-a1208c5169a5?w=800&q=80',
+    alt: 'Emili, mestre de foc d\'Atrevida, treballant a la brasa',
+  },
+];
+---
+
+<BaseLayout
+  title="Qui Som — Atrevida Restaurant"
+  description="Coneix l'equip darrere d'Atrevida: Marc, Héctor, Sheila i Emili. Quatre persones unides per la passió per la cuina i l'amistat."
+  activeRoute="historia"
+>
+  <div class="pt-16 md:pt-20 pb-24 md:pb-32">
+
+    <!-- Page header -->
+    <header class="px-6 pt-16 md:pt-24 pb-16 max-w-6xl mx-auto">
+      <p class="text-xs uppercase tracking-[0.3em] text-primary mb-3">L'equip</p>
+      <h1 class="font-headline text-5xl md:text-7xl text-on-surface tracking-tight">
+        Qui som
+      </h1>
+      <p class="text-on-surface/60 mt-6 max-w-2xl text-base md:text-xl leading-relaxed">
+        Quatre persones, dues ciutats, una passió. L'Atrevida neix de l'amistat entre dues famílies
+        unides per la cuina, i la convicció que el menjar és una manera de cuidar-se.
+      </p>
+    </header>
+
+    <!-- Team cards -->
+    <section class="px-6 max-w-6xl mx-auto" aria-label="Membres de l'equip">
+      <ul class="space-y-6 md:space-y-8" role="list">
+        {team.map((member, i) => (
+          <li>
+            <article
+              class:list={[
+                'grid grid-cols-1 md:grid-cols-2 gap-0 rounded-3xl overflow-hidden bg-surface-container-high',
+                i % 2 === 1 ? 'md:[&>:first-child]:order-2' : '',
+              ]}
+            >
+              <!-- Image -->
+              <div class="aspect-[4/3] md:aspect-auto md:min-h-[400px] overflow-hidden">
+                <img
+                  src={member.image}
+                  alt={member.alt}
+                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                />
+              </div>
+
+              <!-- Content -->
+              <div class="p-8 md:p-12 flex flex-col justify-center">
+                <p class="text-xs uppercase tracking-[0.3em] text-primary mb-2">{member.origin}</p>
+                <h2 class="font-headline text-4xl md:text-5xl text-on-surface mb-1">{member.name}</h2>
+                <p class="text-outline text-sm uppercase tracking-widest mb-6">{member.role}</p>
+                <p class="text-on-surface/70 text-base md:text-lg leading-relaxed">{member.bio}</p>
+              </div>
+            </article>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Quote final -->
+    <section class="px-6 py-20 md:py-28 text-center max-w-3xl mx-auto" aria-label="Frase de l'equip">
+      <span class="material-symbols-outlined text-primary text-5xl mb-6 block" aria-hidden="true">format_quote</span>
+      <blockquote>
+        <p class="font-headline italic text-3xl md:text-4xl text-on-surface leading-tight">
+          "Atrevida és el somni que ens va despertar a Sant Antoni i ens va tornar a casa a Sabadell."
+        </p>
+        <footer class="mt-6 text-xs text-outline uppercase tracking-widest">— Marc, Héctor, Sheila & Emili</footer>
+      </blockquote>
+    </section>
+
+    <!-- CTA -->
+    <div class="px-6 text-center">
+      <a href="/reservar" class="btn-primary inline-flex items-center gap-2 text-lg px-10 py-5">
+        Vine a conèixer-nos
+        <span class="material-symbols-outlined text-[20px]" aria-hidden="true">arrow_forward</span>
+      </a>
+    </div>
+
+    <!-- Mobile nav spacer -->
+    <div class="h-20 md:h-0" aria-hidden="true"></div>
+  </div>
+</BaseLayout>

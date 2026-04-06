@@ -1,6 +1,7 @@
 node_modules
 .astro
 .agents
-.cloude
-.dist
+.claude
+dist
 skills
+figma

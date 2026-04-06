@@ -1,0 +1,159 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="La Història — Atrevida Restaurant"
+  description="La història de l'Atrevida: d'una amistat sincera a Sant Antoni de Vilamajor fins a la casa de la iaia Dominga a Sabadell. Un somni compartit fet realitat."
+  activeRoute="historia"
+>
+  <div class="pt-16 md:pt-20 pb-24 md:pb-32">
+
+    <!-- Hero header -->
+    <header class="px-6 pt-16 md:pt-24 pb-16 max-w-6xl mx-auto">
+      <p class="text-xs uppercase tracking-[0.3em] text-primary mb-3">Com ho fem</p>
+      <h1 class="font-headline text-5xl md:text-8xl text-on-surface tracking-tight leading-none">
+        La nostra<br />
+        <em class="italic text-on-surface/70">Història</em>
+      </h1>
+    </header>
+
+    <!-- Intro image -->
+    <div class="px-6 max-w-6xl mx-auto mb-16">
+      <div class="w-full aspect-[16/7] rounded-3xl overflow-hidden relative">
+        <img
+          src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1600&q=80"
+          alt="Interior càlid i rústic d'Atrevida a Sabadell"
+          class="w-full h-full object-cover brightness-75"
+          loading="eager"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent"></div>
+        <div class="absolute bottom-6 left-6 text-[10px] uppercase tracking-widest text-on-surface/50 bg-surface/60 backdrop-blur-sm px-3 py-1.5 rounded-full">
+          Sants, 2018 — on tot va començar
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline / story -->
+    <section class="px-6 max-w-4xl mx-auto space-y-0" aria-label="La història d'Atrevida">
+
+      <!-- Node 1 -->
+      <article class="grid grid-cols-[48px_1fr] gap-6 pb-16">
+        <div class="flex flex-col items-center gap-2">
+          <div class="w-12 h-12 rounded-full border border-primary/30 flex items-center justify-center font-headline italic text-on-surface/50 flex-shrink-0">
+            01
+          </div>
+          <div class="flex-1 w-px bg-outline-variant/20"></div>
+        </div>
+        <div class="pt-2 pb-4">
+          <p class="text-xs uppercase tracking-[0.3em] text-primary mb-2">Sant Antoni de Vilamajor</p>
+          <h2 class="font-headline text-3xl md:text-4xl text-on-surface mb-4">La trobada</h2>
+          <p class="text-on-surface/70 text-base md:text-lg leading-relaxed">
+            Héctor, Sheila i Emili portaven anys amb un restaurant molt estimat a Sant Antoni.
+            Marc, sabadellenc de tota la vida, va trobar-se allà per primera vegada.
+            Entre fogons, menjars i converses llargues, va néixer una amistat que avui ja és com una família.
+          </p>
+          <div class="mt-8 rounded-2xl overflow-hidden aspect-[16/9] max-w-lg">
+            <img
+              src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80"
+              alt="Cuina de Sant Antoni de Vilamajor"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </article>
+
+      <!-- Node 2 -->
+      <article class="grid grid-cols-[48px_1fr] gap-6 pb-16">
+        <div class="flex flex-col items-center gap-2">
+          <div class="w-12 h-12 rounded-full border border-primary/30 flex items-center justify-center font-headline italic text-on-surface/50 flex-shrink-0">
+            02
+          </div>
+          <div class="flex-1 w-px bg-outline-variant/20"></div>
+        </div>
+        <div class="pt-2 pb-4">
+          <p class="text-xs uppercase tracking-[0.3em] text-primary mb-2">El somni · fa dos anys</p>
+          <h2 class="font-headline text-3xl md:text-4xl text-on-surface mb-4">La iaia Dominga</h2>
+          <p class="text-on-surface/70 text-base md:text-lg leading-relaxed mb-4">
+            Marc va heretar la casa familiar de la iaia Dominga a Sabadell. Una casa plena d'història
+            i records. I va sorgir la pregunta: i si portéssim la cuina de l'Héctor a Sabadell?
+          </p>
+          <p class="text-on-surface/50 text-base leading-relaxed">
+            Curiosament, Marc no havia trepitjat mai Sant Antoni i ells no coneixien tant a prop
+            Sabadell. Però fa dos anys van començar a somiar plegats.
+          </p>
+
+          <!-- Highlight box -->
+          <blockquote class="mt-8 bg-primary-container/10 border-l-2 border-primary rounded-r-2xl px-6 py-5">
+            <p class="font-headline italic text-xl text-on-surface leading-snug">
+              "Així va néixer l'Atrevida: d'una amistat sincera, d'una casa amb ànima i d'un somni compartit."
+            </p>
+          </blockquote>
+        </div>
+      </article>
+
+      <!-- Node 3 -->
+      <article class="grid grid-cols-[48px_1fr] gap-6 pb-16">
+        <div class="flex flex-col items-center gap-2">
+          <div class="w-12 h-12 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-headline italic flex-shrink-0">
+            03
+          </div>
+        </div>
+        <div class="pt-2">
+          <p class="text-xs uppercase tracking-[0.3em] text-primary mb-2">Sabadell · Avui</p>
+          <h2 class="font-headline text-3xl md:text-4xl text-on-surface mb-4">L'Atrevida</h2>
+          <p class="text-on-surface/70 text-base md:text-lg leading-relaxed mb-4">
+            La casa de la iaia Dominga es transforma. Marc la reforma amb cura, preservant l'ànima
+            d'aquell espai familiar mentre l'obre als sabors de l'Héctor.
+          </p>
+          <p class="text-on-surface/50 text-base leading-relaxed">
+            L'Atrevida és un restaurant, però sobretot és una llar. Un lloc on la distància entre
+            Sabadell i Sant Antoni es mesura en plats compartits i rialles llargues.
+          </p>
+
+          <div class="mt-8 grid grid-cols-2 gap-4">
+            <div class="aspect-square rounded-2xl overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80"
+                alt="Interior de l'Atrevida"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                loading="lazy"
+              />
+            </div>
+            <div class="aspect-square rounded-2xl overflow-hidden translate-y-6">
+              <img
+                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80"
+                alt="Sala de l'Atrevida, detalls"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Final quote -->
+    <section class="px-6 py-20 text-center max-w-3xl mx-auto">
+      <span class="material-symbols-outlined text-primary text-5xl mb-6 block" aria-hidden="true">format_quote</span>
+      <blockquote>
+        <p class="font-headline italic text-3xl md:text-4xl text-on-surface leading-tight">
+          "Gràcies per acompanyar-nos en aquest camí."
+        </p>
+        <footer class="mt-6 text-xs text-outline uppercase tracking-widest">— L'equip Atrevida ❤️</footer>
+      </blockquote>
+    </section>
+
+    <!-- CTA -->
+    <div class="px-6 text-center">
+      <a href="/reservar" class="btn-primary inline-flex items-center gap-2 text-lg px-10 py-5">
+        Reservar taula
+        <span class="material-symbols-outlined text-[20px]" aria-hidden="true">calendar_today</span>
+      </a>
+    </div>
+
+    <!-- Mobile nav spacer -->
+    <div class="h-20 md:h-0" aria-hidden="true"></div>
+  </div>
+</BaseLayout>

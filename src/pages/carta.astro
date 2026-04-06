@@ -1,0 +1,137 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const sections = [
+  {
+    title: 'Entrants',
+    subtitle: 'Per compartir',
+    items: [
+      { name: 'Pa de pagès amb tomàquet i oli', desc: 'Tomàquet de la terra, oli verge extra Siurana', price: '4' },
+      { name: 'Burrata amb anxoves i olivada', desc: 'Burrata fresca, anxoves de l\'Escala, olivada artesana', price: '14' },
+      { name: 'Croquetes de l\'Héctor', desc: 'Recepta secreta, fetes a mà cada dia', price: '10', badge: 'Estrella' },
+      { name: 'Carxofes a la brasa', desc: 'Carxofes de temporada, romesco fumat, ametlla', price: '12' },
+      { name: 'Tataki de tonyina roja', desc: 'Tonyina de l\'Atlàntic, sèsam torrat, maionesa de wasabi', price: '16' },
+    ],
+  },
+  {
+    title: 'Principals',
+    subtitle: 'Cuina de foc i mercat',
+    items: [
+      { name: 'Arròs negre de sípia', desc: 'Sípia de la Mediterrània, allioli, tinta natural', price: '22', badge: 'Recomanat' },
+      { name: 'Costella de vedella a la brasa', desc: 'Vedella de pastura, chimichurri d\'herbes, patata confit', price: '28' },
+      { name: 'Bacallà a la llauna', desc: 'Bacallà de primera, samfaina, llard de porc', price: '24' },
+      { name: 'Calamar a la planxa', desc: 'Calamar fresc, mantequilla de mariscos, julivert', price: '20' },
+      { name: 'Trinxat de la Cerdanya', desc: 'Col, patata, llard de porc, ou de granja ferrat', price: '18' },
+    ],
+  },
+  {
+    title: 'Postres',
+    subtitle: 'La dolçor de la iaia',
+    items: [
+      { name: 'Crema catalana de la iaia Dominga', desc: 'Recepta original, vainilla de Madagascar, sucre cremat', price: '8', badge: 'Clàssic' },
+      { name: 'Mousse de xocolata negra', desc: 'Xocolata 70%, flor de sal, oli d\'oliva', price: '9' },
+      { name: 'Pastís de formatge cuita', desc: 'Formatge fresc, maduixes de temporada', price: '9' },
+      { name: 'Gelat artesà de temporada', desc: 'Elaborat amb fruita local, tres boles', price: '7' },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="La Carta — Atrevida Restaurant"
+  description="La carta de l'Héctor. Cuina de mercat, producte km 0 i receptes fetes amb ànima. Descobreix els plats d'Atrevida a Sabadell."
+  activeRoute="menu"
+>
+  <div class="pt-16 md:pt-20 pb-24 md:pb-32">
+
+    <!-- Page header with hero image -->
+    <header class="relative h-[40vh] min-h-[280px] flex items-end overflow-hidden">
+      <div class="absolute inset-0" aria-hidden="true">
+        <img
+          src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400&q=80"
+          alt=""
+          class="w-full h-full object-cover brightness-[0.3]"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+      </div>
+      <div class="relative z-10 px-6 pb-10 max-w-6xl mx-auto w-full">
+        <p class="text-xs uppercase tracking-[0.3em] text-primary mb-2">Temporada Primavera 2025</p>
+        <h1 class="font-headline text-5xl md:text-7xl text-on-surface tracking-tight">La Carta</h1>
+      </div>
+    </header>
+
+    <!-- Intro -->
+    <div class="px-6 py-10 max-w-6xl mx-auto border-b border-outline-variant/10">
+      <p class="text-on-surface/60 text-base md:text-lg leading-relaxed max-w-2xl">
+        Cuina honesta, feta amb producte local i de temporada. La carta canvia amb el mercat
+        per oferir-te sempre el millor. Pregunta al nostre equip pels plats del dia.
+      </p>
+    </div>
+
+    <!-- Menu sections -->
+    <div class="px-6 max-w-6xl mx-auto">
+      {sections.map((section) => (
+        <section class="py-14 md:py-20 border-b border-outline-variant/10 last:border-b-0" aria-labelledby={`section-${section.title}`}>
+          <header class="mb-10">
+            <h2 id={`section-${section.title}`} class="font-headline text-4xl md:text-5xl text-on-surface">
+              {section.title}
+            </h2>
+            <p class="text-outline text-sm uppercase tracking-widest mt-1">{section.subtitle}</p>
+          </header>
+
+          <ul class="space-y-0" role="list">
+            {section.items.map((item, i) => (
+              <li class:list={['py-6', i < section.items.length - 1 ? 'border-b border-outline-variant/10' : '']}>
+                <div class="flex justify-between items-start gap-4">
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-3 flex-wrap">
+                      <h3 class="font-headline text-xl text-on-surface">{item.name}</h3>
+                      {item.badge && (
+                        <span class="text-[10px] uppercase tracking-widest bg-primary-container/20 text-primary px-2.5 py-1 rounded-full border border-primary/20">
+                          {item.badge}
+                        </span>
+                      )}
+                    </div>
+                    <p class="text-on-surface/50 text-sm mt-1.5 leading-relaxed">{item.desc}</p>
+                  </div>
+                  <div class="flex-shrink-0 text-right">
+                    <span class="font-headline text-xl text-on-surface">{item.price}</span>
+                    <span class="text-outline text-sm ml-0.5">€</span>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
+
+    <!-- Vins note -->
+    <aside class="mx-6 my-10 rounded-3xl bg-surface-container-high p-8 max-w-6xl md:mx-auto">
+      <div class="flex items-start gap-4">
+        <span class="material-symbols-outlined text-primary text-3xl flex-shrink-0 mt-0.5" aria-hidden="true">wine_bar</span>
+        <div>
+          <h2 class="font-headline text-2xl text-on-surface mb-2">Carta de vins</h2>
+          <p class="text-on-surface/60 text-base leading-relaxed">
+            La nostra selecció de vins és curada per Héctor, amb especial atenció als cellers
+            de Catalunya i Aragó. Demana consell al nostre equip per a un maridatge perfecte.
+          </p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- CTA -->
+    <div class="px-6 text-center mt-8">
+      <p class="text-on-surface/40 text-sm mb-6">Tens al·lèrgies o intoleràncies? Avisa'ns en fer la reserva.</p>
+      <a href="/reservar" class="btn-primary inline-flex items-center gap-2 text-lg px-10 py-5">
+        Reservar taula
+        <span class="material-symbols-outlined text-[20px]" aria-hidden="true">calendar_today</span>
+      </a>
+    </div>
+
+    <!-- Mobile nav spacer -->
+    <div class="h-20 md:h-0" aria-hidden="true"></div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,355 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Atrevida Restaurant — Sabadell"
+  description="Atrevida Restaurant a Sabadell. Cuina de mercat, feta amb ànima i passió. D'una amistat sincera i un somni compartit."
+  activeRoute="home"
+>
+
+  <!-- ───── HERO (100dvh) ───── -->
+  <section
+    class="relative w-full h-dvh min-h-[600px] flex items-center justify-center overflow-hidden"
+    aria-labelledby="hero-heading"
+  >
+    <!-- Background image with overlay -->
+    <div class="absolute inset-0 -z-0" aria-hidden="true">
+      <img
+        src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&q=80"
+        alt=""
+        class="w-full h-full object-cover brightness-[0.35]"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-background/60 to-transparent"></div>
+    </div>
+
+    <!-- Ghost watermark text -->
+    <span
+      class="absolute left-0 bottom-8 font-headline font-bold italic text-[10rem] md:text-[18rem] text-on-surface/[0.03] select-none pointer-events-none leading-none"
+      aria-hidden="true"
+    >
+      Sabor
+    </span>
+
+    <!-- Hero content -->
+    <div class="relative z-10 w-full max-w-4xl mx-auto px-6 pt-20 text-left">
+      <p class="font-label text-primary tracking-[0.3em] uppercase text-xs md:text-sm mb-4">
+        Sabadell · Des de Sant Antoni de Vilamajor
+      </p>
+
+      <h1
+        id="hero-heading"
+        class="font-headline text-6xl sm:text-7xl md:text-8xl font-bold text-on-surface tracking-tight leading-none mb-6"
+      >
+        Atrevida
+      </h1>
+
+      <p class="font-body text-base md:text-xl text-on-surface/70 max-w-xl leading-relaxed mb-10">
+        Cuina feta amb ànima. El llegat de la iaia Dominga, la passió d'una família i el valor de somiar junts.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="/reservar" class="btn-primary text-center">
+          Reservar taula
+        </a>
+        <a href="/carta" class="btn-ghost text-center">
+          Veure la Carta
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll hint -->
+    <div
+      class="absolute bottom-28 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-on-surface/30 animate-bounce"
+      aria-hidden="true"
+    >
+      <span class="material-symbols-outlined text-[20px]">keyboard_arrow_down</span>
+    </div>
+  </section>
+
+
+  <!-- ───── QUI SOM / EL EQUIP ───── -->
+  <section
+    class="px-6 py-20 md:py-32 bg-surface-container-low"
+    aria-labelledby="equip-heading"
+  >
+    <div class="max-w-6xl mx-auto">
+      <header class="mb-12 md:mb-16">
+        <p class="text-xs uppercase tracking-[0.3em] text-primary mb-3">Qui som</p>
+        <h2 id="equip-heading" class="font-headline text-4xl md:text-5xl text-on-surface">
+          Les cares darrere l'Atrevida
+        </h2>
+        <p class="text-on-surface/60 mt-4 max-w-xl text-base md:text-lg">
+          De Sabadell a Sant Antoni de Vilamajor, una família unida per la cuina i l'amistat.
+        </p>
+      </header>
+
+      <!-- Bento grid del equipo -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4 md:gap-6 auto-rows-[280px] md:auto-rows-[320px]">
+
+        <!-- Marc — large card -->
+        <article class="sm:col-span-2 lg:col-span-8 bg-surface-container-high rounded-3xl overflow-hidden relative group">
+          <img
+            src="https://images.unsplash.com/photo-1595273670150-bd0c3c392e46?w=900&q=80"
+            alt="Marc, director creatiu d'Atrevida"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6 md:p-8">
+            <h3 class="font-headline text-2xl text-on-surface">Marc</h3>
+            <p class="text-primary font-label uppercase text-xs tracking-widest mt-1">Director Creatiu · Sabadell</p>
+            <p class="text-on-surface/60 text-sm mt-2 max-w-sm hidden md:block">
+              Ha heretat la casa familiar de la iaia Dominga i lidera la visió del restaurant.
+            </p>
+          </div>
+        </article>
+
+        <!-- Héctor — small card -->
+        <article class="lg:col-span-4 bg-surface-container-high rounded-3xl overflow-hidden relative group">
+          <img
+            src="https://images.unsplash.com/photo-1583394293214-0b4b94855c71?w=600&q=80"
+            alt="Héctor, xef d'Atrevida"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6">
+            <h3 class="font-headline text-2xl text-on-surface">Héctor</h3>
+            <p class="text-primary font-label uppercase text-xs tracking-widest mt-1">Xef · Sant Antoni</p>
+          </div>
+        </article>
+
+        <!-- Sheila -->
+        <article class="lg:col-span-4 bg-surface-container-high rounded-3xl overflow-hidden relative group">
+          <img
+            src="https://images.unsplash.com/photo-1574181611642-4c4e4f787c15?w=600&q=80"
+            alt="Sheila, experiència de sala d'Atrevida"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6">
+            <h3 class="font-headline text-2xl text-on-surface">Sheila</h3>
+            <p class="text-primary font-label uppercase text-xs tracking-widest mt-1">Sala & Experiència</p>
+          </div>
+        </article>
+
+        <!-- Emili -->
+        <article class="sm:col-span-2 lg:col-span-8 bg-surface-container-high rounded-3xl overflow-hidden relative group">
+          <img
+            src="https://images.unsplash.com/photo-1542528180-a1208c5169a5?w=900&q=80"
+            alt="Emili, mestre de foc d'Atrevida"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6 md:p-8">
+            <h3 class="font-headline text-2xl text-on-surface">Emili</h3>
+            <p class="text-primary font-label uppercase text-xs tracking-widest mt-1">Mestre de Foc · Sant Antoni</p>
+            <p class="text-on-surface/60 text-sm mt-2 max-w-sm hidden md:block">
+              Sogre d'Héctor i ànima de la cuina tradicional. La seva experiència és el fonament de tot.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href="/equip" class="btn-ghost inline-flex items-center gap-2">
+          Conèixer l'equip
+          <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ───── QUÈ FEM / LA CARTA ───── -->
+  <section
+    class="px-6 py-20 md:py-32 bg-background"
+    aria-labelledby="carta-heading"
+  >
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+        <!-- Texto -->
+        <div>
+          <p class="text-xs uppercase tracking-[0.3em] text-primary mb-3">Què fem</p>
+          <h2 id="carta-heading" class="font-headline text-4xl md:text-5xl text-on-surface mb-6">
+            La Carta de l'Héctor
+          </h2>
+          <p class="text-on-surface/70 text-base md:text-lg leading-relaxed mb-4">
+            Cuina de mercat, honesta i atrevida. Producte local de proximitat, tècnica depurada i el sabor
+            que recorda la llar. Cada plat és una conversa entre la tradició catalana i la creativitat contemporània.
+          </p>
+          <p class="text-on-surface/50 text-base leading-relaxed mb-8">
+            Entrants per compartir, cuina de foc lent, postres casolanes. I vins seleccionats amb cura
+            per Héctor per a cada moment.
+          </p>
+
+          <!-- Highlights -->
+          <ul class="space-y-4 mb-10" role="list">
+            {[
+              { icon: 'eco', text: 'Producte de km 0 i temporada' },
+              { icon: 'local_fire_department', text: 'Cuina de brasa i foc lent' },
+              { icon: 'wine_bar', text: 'Carta de vins de proximitat' },
+            ].map(({ icon, text }) => (
+              <li class="flex items-center gap-3 text-on-surface/70">
+                <span class="material-symbols-outlined text-primary text-[20px]" aria-hidden="true">{icon}</span>
+                <span class="text-sm">{text}</span>
+              </li>
+            ))}
+          </ul>
+
+          <a href="/carta" class="btn-primary inline-flex items-center gap-2">
+            Veure la Carta completa
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">restaurant_menu</span>
+          </a>
+        </div>
+
+        <!-- Imagen + tarjeta flotante -->
+        <div class="relative">
+          <div class="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
+            <img
+              src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80"
+              alt="Plat estrella de la carta de l'Atrevida"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+          <!-- Floating badge -->
+          <div
+            class="absolute -bottom-4 -left-4 md:-left-8 bg-primary-container text-on-primary-container rounded-2xl p-5 shadow-2xl max-w-[200px]"
+            aria-hidden="true"
+          >
+            <p class="font-headline text-3xl font-bold leading-none">Km0</p>
+            <p class="text-xs uppercase tracking-widest mt-1 opacity-80">Producte local</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ───── COM HO FEM / LA HISTÒRIA ───── -->
+  <section
+    class="px-6 py-20 md:py-32 bg-surface-container-low"
+    aria-labelledby="historia-heading"
+  >
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+        <!-- Imagen -->
+        <div class="relative order-2 lg:order-1">
+          <div class="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
+            <img
+              src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80"
+              alt="La casa familiar, herència de la iaia Dominga a Sabadell"
+              class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+              loading="lazy"
+            />
+          </div>
+          <!-- Floating quote -->
+          <blockquote
+            class="absolute -top-4 -right-4 md:-right-8 bg-surface-container-high rounded-2xl p-5 shadow-xl max-w-[220px]"
+          >
+            <p class="font-headline italic text-sm text-on-surface leading-snug">
+              "D'una amistat sincera i d'un somni compartit."
+            </p>
+            <footer class="mt-2 text-xs text-primary uppercase tracking-widest">— Marc, Héctor, Sheila & Emili</footer>
+          </blockquote>
+        </div>
+
+        <!-- Texto -->
+        <div class="order-1 lg:order-2">
+          <p class="text-xs uppercase tracking-[0.3em] text-primary mb-3">Com ho fem</p>
+          <h2 id="historia-heading" class="font-headline text-4xl md:text-5xl text-on-surface mb-6">
+            La nostra<br />Història
+          </h2>
+          <p class="text-on-surface/70 text-base md:text-lg leading-relaxed mb-4">
+            Tot va començar a Sant Antoni de Vilamajor, entre fogons, menjars i converses llargues.
+            Marc, Héctor, Sheila i Emili es van conèixer allà i d'aquelles trobades en va néixer
+            una amistat que avui ja és com una família.
+          </p>
+          <p class="text-on-surface/50 text-base leading-relaxed mb-8">
+            Ara, la casa familiar de la iaia Dominga a Sabadell es transforma en l'espai que sempre
+            van somiar: un lloc de trobada, de bon menjar i d'arrels compartides.
+          </p>
+
+          <!-- Timeline minimalista -->
+          <ol class="space-y-6 mb-10" role="list">
+            {[
+              { num: '01', label: 'La trobada', desc: 'Sant Antoni de Vilamajor, entre fogons i converses' },
+              { num: '02', label: 'El somni', desc: 'Dos anys construint un projecte compartit' },
+              { num: '03', label: 'L\'Atrevida', desc: 'Sabadell, la casa de la iaia Dominga reneix' },
+            ].map(({ num, label, desc }, i) => (
+              <li class="flex gap-4 items-start">
+                <span
+                  class:list={[
+                    'flex-shrink-0 w-10 h-10 rounded-full border flex items-center justify-center font-headline italic text-sm',
+                    i === 2
+                      ? 'border-primary-container bg-primary-container text-on-primary-container'
+                      : 'border-primary/30 text-on-surface/50',
+                  ]}
+                  aria-hidden="true"
+                >
+                  {num}
+                </span>
+                <div>
+                  <p class:list={['font-medium text-sm', i === 2 ? 'text-primary' : 'text-on-surface']}>{label}</p>
+                  <p class="text-on-surface/50 text-xs mt-0.5">{desc}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+
+          <a href="/historia" class="btn-ghost inline-flex items-center gap-2">
+            Llegir la nostra història
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">auto_stories</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ───── CTA FINAL (RESERVAR) ───── -->
+  <section
+    class="relative px-6 py-24 md:py-32 overflow-hidden bg-gradient-to-b from-surface-container-low to-surface-container-lowest text-center"
+    aria-labelledby="cta-heading"
+  >
+    <!-- Ghost text decorativo -->
+    <span
+      class="absolute inset-0 flex items-center justify-center font-headline font-bold italic text-[12rem] md:text-[22rem] text-on-surface/[0.025] select-none pointer-events-none leading-none"
+      aria-hidden="true"
+    >
+      Taula
+    </span>
+
+    <div class="relative z-10 max-w-2xl mx-auto">
+      <p class="text-xs uppercase tracking-[0.3em] text-primary mb-4">Vine a trobar-nos</p>
+      <h2 id="cta-heading" class="font-headline text-4xl md:text-6xl text-on-surface mb-6">
+        T'esperem a taula
+      </h2>
+      <p class="text-on-surface/60 text-base md:text-lg mb-10 leading-relaxed">
+        Tant si és un sopar íntim com una celebració en família, a l'Atrevida sempre hi ha un lloc per a tu.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="/reservar" class="btn-primary text-lg px-12 py-5 w-full sm:w-auto text-center">
+          Reservar ara
+        </a>
+        <a
+          href="https://www.instagram.com/atrevidarestaurant/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-on-surface/40 hover:text-primary transition-colors text-xs uppercase tracking-widest border-b border-outline-variant/30 pb-1"
+        >
+          @atrevidarestaurant
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Spacer for mobile bottom nav -->
+  <div class="h-20 md:h-0" aria-hidden="true"></div>
+
+</BaseLayout>

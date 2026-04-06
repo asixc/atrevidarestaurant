@@ -1,0 +1,243 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  activeRoute?: 'home' | 'menu' | 'reservas' | 'historia';
+}
+
+const {
+  title,
+  description = 'Atrevida Restaurant — D\'una amistat sincera, d\'una casa amb ànima i d\'un somni compartit.',
+  activeRoute = 'home',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="ca" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Work+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-background text-on-surface min-h-dvh">
+
+    <!-- Top Nav (desktop visible, mobile hidden in favor of bottom nav) -->
+    <header
+      class="fixed top-0 w-full z-50 bg-[#131313]/80 backdrop-blur-md flex justify-between items-center px-6 h-16 md:h-20"
+      role="banner"
+    >
+      <div class="flex items-center gap-4">
+        <!-- Hamburger (mobile only) -->
+        <button
+          class="md:hidden text-on-surface hover:opacity-70 transition-opacity min-w-[44px] min-h-[44px] flex items-center justify-center"
+          aria-label="Obrir menú"
+          aria-expanded="false"
+          id="menu-toggle"
+        >
+          <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+        </button>
+        <!-- Brand -->
+        <a href="/" class="font-headline text-2xl md:text-3xl font-bold italic text-on-surface tracking-tight">
+          Atrevida
+        </a>
+      </div>
+
+      <!-- Desktop nav links -->
+      <nav aria-label="Navegació principal" class="hidden md:flex items-center gap-8">
+        <a
+          href="/"
+          class:list={['text-xs uppercase tracking-widest font-medium transition-colors', activeRoute === 'home' ? 'text-primary' : 'text-on-surface/60 hover:text-on-surface']}
+        >
+          Inici
+        </a>
+        <a
+          href="/equip"
+          class:list={['text-xs uppercase tracking-widest font-medium transition-colors', activeRoute === 'historia' ? 'text-primary' : 'text-on-surface/60 hover:text-on-surface']}
+        >
+          Qui som
+        </a>
+        <a
+          href="/carta"
+          class:list={['text-xs uppercase tracking-widest font-medium transition-colors', activeRoute === 'menu' ? 'text-primary' : 'text-on-surface/60 hover:text-on-surface']}
+        >
+          La Carta
+        </a>
+        <a
+          href="/historia"
+          class:list={['text-xs uppercase tracking-widest font-medium transition-colors', activeRoute === 'historia' ? 'text-primary' : 'text-on-surface/60 hover:text-on-surface']}
+        >
+          La Història
+        </a>
+        <a
+          href="/reservar"
+          class="btn-primary text-sm px-6 py-2.5"
+        >
+          Reservar
+        </a>
+      </nav>
+    </header>
+
+    <!-- Mobile slide-in menu -->
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 z-40 bg-background/95 backdrop-blur-xl flex flex-col justify-center items-center gap-10 translate-x-full transition-transform duration-300 md:hidden"
+      aria-hidden="true"
+    >
+      <button
+        id="menu-close"
+        class="absolute top-5 right-6 text-on-surface min-w-[44px] min-h-[44px] flex items-center justify-center"
+        aria-label="Tancar menú"
+      >
+        <span class="material-symbols-outlined" aria-hidden="true">close</span>
+      </button>
+      <nav aria-label="Menú mòbil" class="flex flex-col items-center gap-8">
+        <a href="/" class="font-headline text-3xl text-on-surface hover:text-primary transition-colors">Inici</a>
+        <a href="/equip" class="font-headline text-3xl text-on-surface hover:text-primary transition-colors">Qui som</a>
+        <a href="/carta" class="font-headline text-3xl text-on-surface hover:text-primary transition-colors">La Carta</a>
+        <a href="/historia" class="font-headline text-3xl text-on-surface hover:text-primary transition-colors">La Història</a>
+        <a href="/reservar" class="btn-primary text-lg mt-4">Reservar taula</a>
+      </nav>
+    </div>
+
+    <main>
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-surface-container-lowest px-6 py-12 mt-0" role="contentinfo">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div>
+          <p class="font-headline text-2xl italic text-on-surface mb-2">Atrevida</p>
+          <p class="text-on-surface/50 text-sm leading-relaxed">
+            D'una amistat sincera,<br />d'una casa amb ànima<br />i d'un somni compartit.
+          </p>
+        </div>
+        <div>
+          <p class="text-xs uppercase tracking-widest text-outline mb-4">On trobar-nos</p>
+          <address class="not-italic text-on-surface/70 text-sm leading-relaxed">
+            Carrer de l'Exemple, 00<br />
+            08201 Sabadell, Barcelona<br />
+            <a href="tel:+34000000000" class="text-primary hover:underline mt-2 inline-block">+34 000 000 000</a>
+          </address>
+        </div>
+        <div>
+          <p class="text-xs uppercase tracking-widest text-outline mb-4">Horaris</p>
+          <dl class="text-on-surface/70 text-sm leading-relaxed">
+            <div class="flex justify-between">
+              <dt>Dimarts – Divendres</dt>
+              <dd>13:00 – 23:00</dd>
+            </div>
+            <div class="flex justify-between mt-1">
+              <dt>Dissabte – Diumenge</dt>
+              <dd>12:00 – 23:00</dd>
+            </div>
+            <div class="flex justify-between mt-1">
+              <dt>Dilluns</dt>
+              <dd class="text-outline">Tancat</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+      <div class="max-w-6xl mx-auto mt-10 pt-6 border-t border-outline-variant/10 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="text-on-surface/30 text-xs">© 2025 Atrevida Restaurant. Tots els drets reservats.</p>
+        <a
+          href="https://www.instagram.com/atrevidarestaurant/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-on-surface/40 hover:text-primary transition-colors text-xs uppercase tracking-widest"
+        >
+          Instagram
+        </a>
+      </div>
+    </footer>
+
+    <!-- Bottom nav (mobile only) -->
+    <nav
+      class="fixed bottom-0 w-full z-50 bg-[#131313]/90 backdrop-blur-2xl rounded-t-3xl shadow-[0_-4px_20px_rgba(0,0,0,0.4)] md:hidden pb-safe"
+      aria-label="Navegació inferior"
+    >
+      <div class="flex justify-around items-center px-4 pb-5 pt-3">
+        <a
+          href="/"
+          class:list={['flex flex-col items-center gap-0.5 px-4 py-2 rounded-2xl transition-all duration-200 min-w-[44px]', activeRoute === 'home' ? 'text-primary bg-primary-container/10' : 'text-on-surface/50 hover:text-primary']}
+          aria-label="Inici"
+          aria-current={activeRoute === 'home' ? 'page' : undefined}
+        >
+          <span class="material-symbols-outlined text-[22px]" aria-hidden="true">home</span>
+          <span class="text-[10px] uppercase tracking-widest font-medium">Inici</span>
+        </a>
+        <a
+          href="/equip"
+          class:list={['flex flex-col items-center gap-0.5 px-4 py-2 rounded-2xl transition-all duration-200 min-w-[44px]', activeRoute === 'historia' ? 'text-primary bg-primary-container/10' : 'text-on-surface/50 hover:text-primary']}
+          aria-label="Qui som"
+        >
+          <span class="material-symbols-outlined text-[22px]" aria-hidden="true">groups</span>
+          <span class="text-[10px] uppercase tracking-widest font-medium">Qui som</span>
+        </a>
+        <a
+          href="/carta"
+          class:list={['flex flex-col items-center gap-0.5 px-4 py-2 rounded-2xl transition-all duration-200 min-w-[44px]', activeRoute === 'menu' ? 'text-primary bg-primary-container/10' : 'text-on-surface/50 hover:text-primary']}
+          aria-label="La Carta"
+        >
+          <span class="material-symbols-outlined text-[22px]" aria-hidden="true">restaurant_menu</span>
+          <span class="text-[10px] uppercase tracking-widest font-medium">La Carta</span>
+        </a>
+        <a
+          href="/reservar"
+          class:list={['flex flex-col items-center gap-0.5 px-4 py-2 rounded-2xl transition-all duration-200 min-w-[44px]', activeRoute === 'reservas' ? 'text-primary bg-primary-container/10' : 'text-on-surface/50 hover:text-primary']}
+          aria-label="Reservar"
+        >
+          <span class="material-symbols-outlined text-[22px]" aria-hidden="true">calendar_today</span>
+          <span class="text-[10px] uppercase tracking-widest font-medium">Reservar</span>
+        </a>
+      </div>
+    </nav>
+
+    <script>
+      const toggle = document.getElementById('menu-toggle');
+      const closeBtn = document.getElementById('menu-close');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      function openMenu() {
+        mobileMenu?.classList.remove('translate-x-full');
+        mobileMenu?.setAttribute('aria-hidden', 'false');
+        toggle?.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMenu() {
+        mobileMenu?.classList.add('translate-x-full');
+        mobileMenu?.setAttribute('aria-hidden', 'true');
+        toggle?.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      toggle?.addEventListener('click', openMenu);
+      closeBtn?.addEventListener('click', closeMenu);
+
+      // Close on nav link click
+      mobileMenu?.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', closeMenu);
+      });
+    </script>
+  </body>
+</html>
+
+<style>
+  /* Safe area for bottom nav on devices with home indicator */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+</style>

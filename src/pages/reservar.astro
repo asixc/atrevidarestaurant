@@ -1,0 +1,254 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Reservar Taula — Atrevida Restaurant"
+  description="Reserva la teva taula a Atrevida Restaurant a Sabadell. T'esperem per compartir una experiència gastronòmica única."
+  activeRoute="reservas"
+>
+  <div class="pt-16 md:pt-20 pb-24 md:pb-32 min-h-dvh">
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 min-h-[calc(100dvh-80px)]">
+
+      <!-- Left: Image + info -->
+      <aside class="relative hidden lg:block">
+        <div class="sticky top-20 h-[calc(100dvh-80px)] overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80"
+            alt="Interior de l'Atrevida, ambient càlid i acollidor"
+            class="w-full h-full object-cover brightness-50"
+            loading="eager"
+          />
+          <div class="absolute inset-0 bg-gradient-to-r from-transparent to-background"></div>
+          <div class="absolute bottom-12 left-10 right-10">
+            <p class="font-headline text-4xl italic text-on-surface mb-4">T'esperem</p>
+            <dl class="space-y-3 text-on-surface/60 text-sm">
+              <div>
+                <dt class="text-xs uppercase tracking-widest text-outline mb-1">Adreça</dt>
+                <dd>Carrer de l'Exemple, 00<br />08201 Sabadell, Barcelona</dd>
+              </div>
+              <div>
+                <dt class="text-xs uppercase tracking-widest text-outline mb-1">Telèfon</dt>
+                <dd><a href="tel:+34000000000" class="text-primary hover:underline">+34 000 000 000</a></dd>
+              </div>
+              <div>
+                <dt class="text-xs uppercase tracking-widest text-outline mb-1">Horaris</dt>
+                <dd>Dimarts – Diumenge: 13:00 – 23:00<br /><span class="text-outline">Dilluns tancat</span></dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Right: Form -->
+      <main class="px-6 py-16 md:py-24 lg:px-12 xl:px-20 max-w-xl lg:max-w-none mx-auto w-full">
+
+        <header class="mb-10">
+          <p class="text-xs uppercase tracking-[0.3em] text-primary mb-3">Reservar</p>
+          <h1 class="font-headline text-4xl md:text-5xl text-on-surface">
+            Fes la teva reserva
+          </h1>
+          <p class="text-on-surface/50 mt-3 text-sm leading-relaxed">
+            Omple el formulari i et confirmarem la reserva en menys de 24 hores.
+            Per a grups de més de 8 persones, truca'ns directament.
+          </p>
+        </header>
+
+        <form
+          class="space-y-8"
+          action="#"
+          method="POST"
+          aria-label="Formulari de reserva"
+          novalidate
+        >
+          <!-- Nom i cognoms -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="space-y-2">
+              <label for="nom" class="block text-xs uppercase tracking-widest text-outline">
+                Nom <span class="text-primary" aria-label="camp obligatori">*</span>
+              </label>
+              <input
+                type="text"
+                id="nom"
+                name="nom"
+                required
+                autocomplete="given-name"
+                placeholder="El teu nom"
+                class="w-full bg-transparent border-b border-outline-variant/30 focus:border-primary py-3 text-on-surface placeholder:text-on-surface/30 text-base outline-none transition-colors duration-200 min-h-[44px]"
+              />
+            </div>
+            <div class="space-y-2">
+              <label for="cognoms" class="block text-xs uppercase tracking-widest text-outline">
+                Cognoms <span class="text-primary" aria-label="camp obligatori">*</span>
+              </label>
+              <input
+                type="text"
+                id="cognoms"
+                name="cognoms"
+                required
+                autocomplete="family-name"
+                placeholder="Els teus cognoms"
+                class="w-full bg-transparent border-b border-outline-variant/30 focus:border-primary py-3 text-on-surface placeholder:text-on-surface/30 text-base outline-none transition-colors duration-200 min-h-[44px]"
+              />
+            </div>
+          </div>
+
+          <!-- Telèfon i email -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="space-y-2">
+              <label for="telefon" class="block text-xs uppercase tracking-widest text-outline">
+                Telèfon <span class="text-primary" aria-label="camp obligatori">*</span>
+              </label>
+              <input
+                type="tel"
+                id="telefon"
+                name="telefon"
+                required
+                autocomplete="tel"
+                placeholder="+34 000 000 000"
+                class="w-full bg-transparent border-b border-outline-variant/30 focus:border-primary py-3 text-on-surface placeholder:text-on-surface/30 text-base outline-none transition-colors duration-200 min-h-[44px]"
+              />
+            </div>
+            <div class="space-y-2">
+              <label for="email" class="block text-xs uppercase tracking-widest text-outline">
+                Correu electrònic <span class="text-primary" aria-label="camp obligatori">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                autocomplete="email"
+                placeholder="tu@exemple.com"
+                class="w-full bg-transparent border-b border-outline-variant/30 focus:border-primary py-3 text-on-surface placeholder:text-on-surface/30 text-base outline-none transition-colors duration-200 min-h-[44px]"
+              />
+            </div>
+          </div>
+
+          <!-- Data i hora -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="space-y-2">
+              <label for="data" class="block text-xs uppercase tracking-widest text-outline">
+                Data <span class="text-primary" aria-label="camp obligatori">*</span>
+              </label>
+              <input
+                type="date"
+                id="data"
+                name="data"
+                required
+                class="w-full bg-transparent border-b border-outline-variant/30 focus:border-primary py-3 text-on-surface text-base outline-none transition-colors duration-200 min-h-[44px] [color-scheme:dark]"
+              />
+            </div>
+            <div class="space-y-2">
+              <label for="hora" class="block text-xs uppercase tracking-widest text-outline">
+                Hora <span class="text-primary" aria-label="camp obligatori">*</span>
+              </label>
+              <select
+                id="hora"
+                name="hora"
+                required
+                class="w-full bg-background border-b border-outline-variant/30 focus:border-primary py-3 text-on-surface text-base outline-none transition-colors duration-200 min-h-[44px] cursor-pointer"
+              >
+                <option value="" class="bg-surface-container">Selecciona una hora</option>
+                <optgroup label="Migdia" class="bg-surface-container">
+                  <option value="13:00" class="bg-surface-container">13:00</option>
+                  <option value="13:30" class="bg-surface-container">13:30</option>
+                  <option value="14:00" class="bg-surface-container">14:00</option>
+                  <option value="14:30" class="bg-surface-container">14:30</option>
+                  <option value="15:00" class="bg-surface-container">15:00</option>
+                </optgroup>
+                <optgroup label="Nit" class="bg-surface-container">
+                  <option value="20:00" class="bg-surface-container">20:00</option>
+                  <option value="20:30" class="bg-surface-container">20:30</option>
+                  <option value="21:00" class="bg-surface-container">21:00</option>
+                  <option value="21:30" class="bg-surface-container">21:30</option>
+                  <option value="22:00" class="bg-surface-container">22:00</option>
+                </optgroup>
+              </select>
+            </div>
+          </div>
+
+          <!-- Comensals -->
+          <fieldset>
+            <legend class="block text-xs uppercase tracking-widest text-outline mb-4">
+              Nombre de persones <span class="text-primary" aria-label="camp obligatori">*</span>
+            </legend>
+            <div class="flex flex-wrap gap-3" role="group" aria-label="Selecciona nombre de comensals">
+              {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
+                <label class="cursor-pointer">
+                  <input type="radio" name="comensals" value={n} class="sr-only peer" required />
+                  <span class="flex items-center justify-center w-12 h-12 rounded-xl border border-outline-variant/30 text-on-surface/60 text-sm font-medium peer-checked:border-primary peer-checked:text-primary peer-checked:bg-primary/10 hover:border-primary/50 transition-all duration-200 select-none">
+                    {n}
+                  </span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <!-- Notes -->
+          <div class="space-y-2">
+            <label for="notes" class="block text-xs uppercase tracking-widest text-outline">
+              Notes o al·lèrgies (opcional)
+            </label>
+            <textarea
+              id="notes"
+              name="notes"
+              rows={3}
+              placeholder="Al·lèrgies, intoleràncies, ocasió especial..."
+              class="w-full bg-transparent border-b border-outline-variant/30 focus:border-primary py-3 text-on-surface placeholder:text-on-surface/30 text-base outline-none transition-colors duration-200 resize-none"
+            ></textarea>
+          </div>
+
+          <!-- Privacitat -->
+          <label class="flex items-start gap-3 cursor-pointer group">
+            <input
+              type="checkbox"
+              required
+              class="mt-1 flex-shrink-0 w-5 h-5 rounded border border-outline-variant/40 bg-transparent checked:bg-primary-container checked:border-primary-container accent-primary"
+              aria-describedby="privacitat-desc"
+            />
+            <span id="privacitat-desc" class="text-on-surface/50 text-xs leading-relaxed">
+              He llegit i accepto la{' '}
+              <a href="/privacitat" class="text-primary hover:underline">política de privacitat</a>.
+              Les meves dades s'usaran únicament per gestionar la reserva.
+            </span>
+          </label>
+
+          <!-- Submit -->
+          <div class="pt-2">
+            <button
+              type="submit"
+              class="btn-primary w-full sm:w-auto text-lg px-12 py-5 flex items-center justify-center gap-2"
+            >
+              Confirmar reserva
+              <span class="material-symbols-outlined text-[20px]" aria-hidden="true">arrow_forward</span>
+            </button>
+          </div>
+        </form>
+
+        <!-- Mobile info (hidden on desktop) -->
+        <section class="lg:hidden mt-16 pt-10 border-t border-outline-variant/10 space-y-4" aria-label="Informació del restaurant">
+          <h2 class="font-headline text-2xl text-on-surface">Com trobar-nos</h2>
+          <dl class="space-y-3 text-on-surface/60 text-sm">
+            <div>
+              <dt class="text-xs uppercase tracking-widest text-outline mb-1">Adreça</dt>
+              <dd>Carrer de l'Exemple, 00<br />08201 Sabadell, Barcelona</dd>
+            </div>
+            <div>
+              <dt class="text-xs uppercase tracking-widest text-outline mb-1">Telèfon</dt>
+              <dd><a href="tel:+34000000000" class="text-primary">+34 000 000 000</a></dd>
+            </div>
+            <div>
+              <dt class="text-xs uppercase tracking-widest text-outline mb-1">Horaris</dt>
+              <dd>Dimarts – Diumenge: 13:00 – 23:00<br /><span class="text-outline">Dilluns tancat</span></dd>
+            </div>
+          </dl>
+        </section>
+      </main>
+    </div>
+
+    <!-- Mobile nav spacer -->
+    <div class="h-20 md:h-0" aria-hidden="true"></div>
+  </div>
+</BaseLayout>
