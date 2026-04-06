@@ -2,7 +2,7 @@
 interface Props {
   title: string;
   description?: string;
-  activeRoute?: 'home' | 'menu' | 'reservas' | 'historia';
+  activeRoute?: 'home' | 'menu' | 'reservas' | 'equip' | 'historia';
 }
 
 const {
@@ -64,7 +64,7 @@ const {
         </a>
         <a
           href="/equip"
-          class:list={['text-xs uppercase tracking-widest font-medium transition-colors', activeRoute === 'historia' ? 'text-primary' : 'text-on-surface/60 hover:text-on-surface']}
+          class:list={['text-xs uppercase tracking-widest font-medium transition-colors', activeRoute === 'equip' ? 'text-primary' : 'text-on-surface/60 hover:text-on-surface']}
         >
           Qui som
         </a>
@@ -92,7 +92,7 @@ const {
     <!-- Mobile slide-in menu -->
     <div
       id="mobile-menu"
-      class="fixed inset-0 z-40 bg-background/95 backdrop-blur-xl flex flex-col justify-center items-center gap-10 translate-x-full transition-transform duration-300 md:hidden"
+      class="fixed inset-0 z-[60] bg-background/95 backdrop-blur-xl flex flex-col justify-center items-center gap-10 translate-x-full transition-transform duration-300 md:hidden"
       aria-hidden="true"
     >
       <button
@@ -180,7 +180,7 @@ const {
         </a>
         <a
           href="/equip"
-          class:list={['flex flex-col items-center gap-0.5 px-4 py-2 rounded-2xl transition-all duration-200 min-w-[44px]', activeRoute === 'historia' ? 'text-primary bg-primary-container/10' : 'text-on-surface/50 hover:text-primary']}
+          class:list={['flex flex-col items-center gap-0.5 px-4 py-2 rounded-2xl transition-all duration-200 min-w-[44px]', activeRoute === 'equip' ? 'text-primary bg-primary-container/10' : 'text-on-surface/50 hover:text-primary']}
           aria-label="Qui som"
         >
           <span class="material-symbols-outlined text-[22px]" aria-hidden="true">groups</span>
@@ -205,32 +205,41 @@ const {
       </div>
     </nav>
 
-    <script>
-      const toggle = document.getElementById('menu-toggle');
-      const closeBtn = document.getElementById('menu-close');
-      const mobileMenu = document.getElementById('mobile-menu');
+    <script is:inline>
+      (function () {
+        var toggle = document.getElementById('menu-toggle');
+        var closeBtn = document.getElementById('menu-close');
+        var mobileMenu = document.getElementById('mobile-menu');
 
-      function openMenu() {
-        mobileMenu?.classList.remove('translate-x-full');
-        mobileMenu?.setAttribute('aria-hidden', 'false');
-        toggle?.setAttribute('aria-expanded', 'true');
-        document.body.style.overflow = 'hidden';
-      }
+        function openMenu() {
+          mobileMenu.classList.remove('translate-x-full');
+          mobileMenu.setAttribute('aria-hidden', 'false');
+          toggle.setAttribute('aria-expanded', 'true');
+          document.body.style.overflow = 'hidden';
+          setTimeout(function () { closeBtn && closeBtn.focus(); }, 50);
+        }
 
-      function closeMenu() {
-        mobileMenu?.classList.add('translate-x-full');
-        mobileMenu?.setAttribute('aria-hidden', 'true');
-        toggle?.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-      }
+        function closeMenu() {
+          mobileMenu.classList.add('translate-x-full');
+          mobileMenu.setAttribute('aria-hidden', 'true');
+          toggle.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+          toggle.focus();
+        }
 
-      toggle?.addEventListener('click', openMenu);
-      closeBtn?.addEventListener('click', closeMenu);
+        toggle.addEventListener('click', openMenu);
+        closeBtn.addEventListener('click', closeMenu);
 
-      // Close on nav link click
-      mobileMenu?.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', closeMenu);
-      });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && !mobileMenu.classList.contains('translate-x-full')) {
+            closeMenu();
+          }
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', closeMenu);
+        });
+      })();
     </script>
   </body>
 </html>
